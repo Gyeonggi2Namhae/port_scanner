@@ -1,0 +1,36 @@
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=divice-width, initial-scale=1.0">
+  <title>GN Port Scanner</title>
+  <link href='https://spoqa.github.io/spoqa-han-sans/css/SpoqaHanSansNeo.css' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <div class="Scan">
+        <h1><span class="GN_color">GN</span> Port Scanner</h1>
+        <form id="scanForm" action="scan.py" method="POST">
+            <label for="IP"> My IP Address :</label>
+            <input type="text" id="IP" placeholder="Enter IP Address">
+            <button type="submit" id="scan">SCAN</button>
+            <button type="submit" id="myscan">My IP Scan</button>
+        </form>
+    </div>
+    <script>
+        // id가 myscan인 button을 클릭하면 이벤트 발생
+        // 아마 여기에는 제출 아이피가 아닌 내 아이피를 넣어서 보낼 필요가 있어보임
+        document.getElementById("myscan").addEventListener("click", function(event) {
+            //document.getElementById("scanForm").submit();
+        });
+
+        document.getElementById("scanForm").addEventListener("submit", function(event) {
+            // submit -> result page로 이동(원래는 scan.py로 이동)
+            event.preventDefault();
+            window.location.href = "result.html";
+        });
+
+    </script>
+</body>
+</html>
