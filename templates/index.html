@@ -12,7 +12,7 @@
     <div class="Scan">
         <h1><span class="GN_color">GN</span> Port Scanner</h1>
         <form id="scanForm" action="/scan" method="POST">
-            <label for="IP"> My IP Address :</label>
+            <label for="IP"> My IP Address : {{ ip_address }}</label>
             <input type="text" id="IP" name="IP" placeholder="Enter IP Address">
             <input type="hidden" id="hiddenIp" value="{{ ip_address }}">
             <button type="submit" id="scan">SCAN</button>
