@@ -12,6 +12,12 @@
     <div class="Result">
         <h2>Scan Result</h2>
     </div>
+    <ul>
+        {% for result in results %}
+            <li>Port: {{ result.port }}, Status: {{ result.status }}, Service: {{ result.service }}, Description: {{ result.description }}</li>
+        {% endfor %}
+    </ul>
     
 </body>
 </html>
+
