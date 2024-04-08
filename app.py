@@ -10,14 +10,17 @@ myip = get_ip.get_ip()
 
 @app.route('/')
 def index():
+    print("aa")
     return render_template('index.html', ip_address = myip)
     # return render_template('index.html')
 
 @app.route('/scan', methods=['POST'])
 def scan_ports():
-    ip_address = request.json.get('IP')
+    ip_address = request.form.get('IP')
+    print(ip_address)
     scan_results = scan.well_known_port_scan(ip_address)
-    return jsonify(scan_results)
+    # return jsonify(scan_results)
+    return render_template('result.html', results = scan_results)
 
 if __name__ == "__main__":
     app.run()
