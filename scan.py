@@ -9,7 +9,7 @@ def well_known_port_scan(target):
 
     scan_result = []
     for port_info in ports_info:
-        port = port_info['port']
+        port = port_info['port_number']
         try:
             ip = IP(dst=target)
             tcp = TCP(dport=port, flags="S")
@@ -28,8 +28,8 @@ def well_known_port_scan(target):
         scan_result.append({
             "port": port,
             "status": status,
-            "service": port_info['service'],
-            "description": port_info['description']
+            "service": port_info['service_namea'],
+            "description": port_info['port_description']
         })
     return scan_result
         
