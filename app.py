@@ -23,4 +23,4 @@ def scan_ports():
     return render_template('result.html', results = scan_results)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(host="0.0.0.0")
