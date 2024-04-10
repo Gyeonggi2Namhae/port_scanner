@@ -17,12 +17,12 @@
     height: 80vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: safe center;
     align-items: center;
-    align-content: center;
   }
+
   
-  h1 {
+  .h1_index {
     width: 360px;
     font-weight: bold;
     font-size: 45px;
@@ -31,7 +31,20 @@
     color: #101010;
     letter-spacing: -.05em;
   }
+
+  .h1_result {
+    margin-bottom: 0.5em;
+    margin-top: 1em;
+    font-size: 40px;
+  }
   
+  .table_result {
+    border: 3px solid;
+    padding: 8px;
+    border-radius: 15px;
+  }
+
+
   label {
     display: block;
     width: 100%;
@@ -49,6 +62,10 @@
     font-size: 16px;
     border: 1px solid #d3dce6;
     transition: border-color 200ms ease-in-out;
+  }
+
+  td {
+    padding: 8px;
   }
   
   button {
@@ -75,10 +92,6 @@
     border-color: #1fb6ff;
   }
   
-  input[type="file"] {
-    padding-top: 10px;
-  }
-
   .Scan {
     display: flex;
     flex-direction: column; 
@@ -88,3 +101,44 @@
     color: #f0bbcf;
   }
 
+  .reading-glasses {
+    display: flex;
+    flex-direction: column;
+    width: 16px;
+    height: 16px;
+    margin: auto;
+  }
+  
+  .reading-glasses__circle {
+    width: 8px;
+    height: 8px;
+    border: 2px solid black; 
+    border-radius: 50%;
+  }
+  
+  .reading-glasses__line {
+    width: 6px;
+    border: 1px solid black; 
+    border-radius: 1px;
+    transform: translate3d(8px, -1px, 0) rotate(45deg);
+    background-color: black; 
+  }
+
+  .tooltip {
+    display: inline-block;
+  }
+
+  .tooltip-text {
+    display: none;
+    position: absolute;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+    background-color: black;
+    color: white;
+    font-size: 14px;
+  }
+
+  .tooltip:hover .tooltip-text {
+    display: block;
+  }
