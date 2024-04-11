@@ -17,9 +17,10 @@ def index():
 def scan_ports():
     ip_address = request.form.get('IP')
     print(ip_address)
-    scan_results = multi_threading_code.multi_threading_scan(ip_address,(1,123))
+    known_scan_results = multi_threading_code.well_known_scan(ip_address)
+    scan_results = multi_threading_code.multi_threading_scan(ip_address,(996,65536))
     # return jsonify(scan_results)
-    return render_template('result.html', results = scan_results)
+    return render_template('result.html', results = scan_results, unknown=scan_results)
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0")
