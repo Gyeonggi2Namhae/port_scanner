@@ -1,8 +1,7 @@
 from flask import Flask, render_template, request
-import jsonify
 
 import get_ip
-import scan
+import multi_threading_code
 
 app = Flask(__name__)
 
@@ -18,7 +17,7 @@ def index():
 def scan_ports():
     ip_address = request.form.get('IP')
     print(ip_address)
-    scan_results = scan.well_known_port_scan(ip_address)
+    scan_results = multi_threading_code.multi_threading_scan(ip_address,(1,123))
     # return jsonify(scan_results)
     return render_template('result.html', results = scan_results)
 
