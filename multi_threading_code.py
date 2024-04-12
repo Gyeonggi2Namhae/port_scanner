@@ -33,15 +33,14 @@ def well_known_scan(target_ip):
                 data = 'error'
         finally:
             resultLock.acquire()
-            if status == 'closed':
-                # 스캔 결과에 서비스 이름 추가
-                scan_result.append({
-                    'port': portnum,
-                    'status': status,
-                    'service': servicename,
-                    'description': desc,  # 필요하다면 여기에 추가 정보 포함
-                    'tooltip': tooltip 
-                })
+            # 스캔 결과에 서비스 이름 추가
+            scan_result.append({
+                'port': portnum,
+                'status': status,
+                'service': servicename,
+                'description': desc,  # 필요하다면 여기에 추가 정보 포함
+                'tooltip': tooltip 
+            })
             resultLock.release()
             connection_lock.release()
 
