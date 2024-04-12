@@ -17,9 +17,10 @@ def well_known_scan(target_ip):
         servicename = port_info['service_name']  # 서비스 이름을 DB에서 가져옴
         status = 'closed'
         desc = port_info['port_description']
+        tooltip = port_info['vul_desc']
         try:
             with socket.socket() as s:
-                s.settimeout(1)
+                s.settimeout(3)
                 s.connect((target_ip, portnum))
                 s.send("Python Connect\n".encode())
                 data = s.recv(1024).decode()
@@ -32,13 +33,14 @@ def well_known_scan(target_ip):
                 data = 'error'
         finally:
             resultLock.acquire()
-            if status == 'open':
+            if status == 'closed':
                 # 스캔 결과에 서비스 이름 추가
                 scan_result.append({
                     'port': portnum,
                     'status': status,
                     'service': servicename,
-                    'description': desc  # 필요하다면 여기에 추가 정보 포함
+                    'description': desc,  # 필요하다면 여기에 추가 정보 포함
+                    'tooltip': tooltip 
                 })
             resultLock.release()
             connection_lock.release()
