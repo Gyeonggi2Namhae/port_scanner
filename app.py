@@ -5,11 +5,11 @@ import multi_threading_code
 
 app = Flask(__name__)
 
-myip = get_ip.get_ip()
+
 
 @app.route('/')
 def index():
-    print("aa")
+    myip = request.remote_addr()
     return render_template('index.html', ip_address = myip)
     # return render_template('index.html')
 
