@@ -29,13 +29,28 @@ def get_all_list():
         conn.close()
     return data
 
-def get_well_known_port():
+def get_custom_list():
     conn = connect_to_db()
     try:
         with conn.cursor() as cursor:
-            sql = "SELECT port_number FROM well_known_port_list"
+            sql = "SELECT port_num, service_name, port_desc FROM unknown_port"
             cursor.execute(sql)
             data = cursor.fetchall()
     finally:
         conn.close()
     return data
+
+def save_custom_port(ip, port_num, service_name, port_desc):
+    conn = connect_to_db()
+    try:
+        with conn.cursor() as cursor:
+            sql = """
+                INSERT INTO unknown_port (ip, port_number, service_name, port_description) 
+                VALUES (%s, %s, %s, %s)
+                """
+            values = (ip, port_num, service_name, port_desc)
+            cursor.execute(sql, values)
+            conn.commit()
+    finally:
+        conn.close()
+        
