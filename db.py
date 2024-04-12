@@ -22,7 +22,7 @@ def get_all_list():
     conn = connect_to_db()
     try:
         with conn.cursor() as cursor:
-            sql = "SELECT port_number, service_name, port_description FROM well_known_port_list"
+            sql = "SELECT port_number, service_name, port_description, vul_desc FROM well_known_port_list"
             cursor.execute(sql)
             data = cursor.fetchall()
     finally:
